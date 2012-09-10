@@ -1,0 +1,44 @@
+<DOCTYPE html>
+<html>
+  <head>
+    <title>Find if there is active company events</title>
+  </head>
+  <body>
+    <header>
+      <h1>Company Events Checker</h1>
+      <p>Find if there is any company events that can be registered by me from <a href="https://www.abakus.no">abakus.no</a></p>
+    </header>
+    <section>
+      <article>
+        <table>
+          <tr>
+            <th>Name of the event</th>
+            <th>If can be registered now</th>
+          </tr>
+          <% @company_events.each do |event| %>
+          <tr>
+            <td class="event-title"><p><a href="<%= event[:url] %>" target="_blank"><%= event[:title] %></a></p></td>
+            <td class="if-can-register">
+              <% if event[:if_can_register] == true %>
+                <p class="result-yes">YES</p>
+              <% else %>
+                <p class="result-no">NO</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+        <!--
+        <aside>
+          <p>All active events are sent to 
+             <a href="https://twitter.com/zenja_dev" target="_blank">zenja's dev twitter</a>
+             with tag #abakus_company_event</p>
+        </aside>
+        -->
+      </arcitle>
+    </section>
+
+  </body>
+</html>
+
+
