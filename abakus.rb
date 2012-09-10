@@ -31,6 +31,9 @@ class Abakus
     @agent.get("https://abakus.no/user/logout/")
   end
 
+  # Get all company events, 
+  # return an array of hashes like:
+  # [{:title => "Google Show!", :url => "https://..."}, {...}, ...]
   def get_company_events
     company_event_page = @agent.get("https://abakus.no/event/company/")
     events_list = company_event_page.search("#eventlist")
@@ -44,7 +47,7 @@ class Abakus
     return events_array
   end
 
-  # Param: the url off an event
+  # Param: the url of an event
   # Output: true or false
   def if_can_register(url)
     event_page = @agent.get(url)
@@ -58,6 +61,7 @@ class Abakus
     end
   end
 
+  # This method is just for debug
   def test
     company_event_page = @agent.get("https://abakus.no/event/company/")
     events_list = company_event_page.search("#eventlist")
