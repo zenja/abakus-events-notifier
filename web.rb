@@ -43,7 +43,8 @@ get '/check-and-notify' do
   @company_events.each do |event|
     if event[:if_can_register] == true
       # notify via twitter
-      @zt.tweet "#abakus_company_event You can now register the company event: \"#{event[:title]}\". URL: #{event[:url]}"
+      @zt.tweet "#abakus_company_event You can now register the company event: \"#{event[:title]}\"." + 
+        " URL: #{event[:url]} ##{Time.new.usec}"
     end
   end
 
